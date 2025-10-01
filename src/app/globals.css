@@ -1,0 +1,56 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@import "katex/dist/katex.min.css";
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-rgb: 246, 248, 250;
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: rgb(var(--background-rgb));
+}
+
+/* Line clamp utility for text truncation */
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/*
+.math-content h1 {
+  @apply text-2xl font-bold mb-4 mt-6;
+}
+
+.math-content h2 {
+  @apply text-xl font-bold mb-3 mt-5;
+}
+
+.math-content h3 {
+  @apply text-lg font-bold mb-2 mt-4;
+}
+
+.math-content p {
+  @apply mb-4;
+}
+
+.math-content ul {
+  @apply list-disc pl-5 mb-4;
+}
+
+.math-content li {
+  @apply mb-1;
+}
+
+.math-content code {
+  @apply bg-gray-100 px-1 rounded;
+}
+
+.math-content pre {
+  @apply bg-gray-100 p-4 rounded mb-4 overflow-auto;
+}
+*/

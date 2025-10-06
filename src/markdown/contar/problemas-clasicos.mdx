@@ -1,0 +1,283 @@
+import Image from 'next/image';
+
+import ProblemCard from '@/components/ui/ProblemCard';
+import SolutionToggle from '@/components/ui/SolutionToggle';
+import InlineProblem from '@/components/ui/InlineProblem';
+
+export const title = "Problemas clásicos";
+export const description = "Muchos problemas de contar pueden resolverse usando unas tres o cuatro técnicas \"clásicas\"";
+export const index = 3;
+
+# Problemas clásicos
+
+En el arte de contar existen los **"problemas clásicos"**, es decir, preguntas que aparecen frecuentemente a la hora de contar cosas que, en principio, podrían no tener nada que ver con estos "problemas clásicos". 
+
+En esta sección mezclo ejemplos con números concretos con fórmulas para las situaciones más generales, donde la cantidad de objetos (remeras, libros, etc.) son una variable "$n$" o "$r$". No es tan importante entender "la fórmula" en sí, sino más bien entender cómo llegar a ella en cada caso particular.
+
+## Regla del producto
+
+La primera técnica es la que podríamos llamar la **regla del producto** en la combinatoria. Responde a la pregunta de "cómo se pueden combinar" las posibilidades de tomar muchas elecciones independientemente. El ejemplo perfecto para esta idea es el siguiente:
+
+<ProblemCard number="1" difficulty="easy">
+¿De cuantas formas podemos vestirnos si tenemos $5$ remeras, $4$ pantalones y $3$ pares de zapatillas?
+</ProblemCard>
+
+<SolutionToggle>
+Lo importante es notar que las elecciones de distintas prendas de ropa son independientes entre sí; es decir, para cada elección de remera, todavía tenemos que elegir uno de $4$ pantalones, y para cada uno de ellos, uno entre $3$ pares de zapatillas.
+
+Como para cada una de las $5$ remeras hay $4$ posibles pantalónes, hay $5\times 4 = 20$ formas de elegir una remera y un pantalón. Para cada una de esas $20$ elecciones de remera y pantalón, hay $3$ posibles pares de zapatillas para elegir, por lo que hay $20\times 3 = 60$ posibles formas de vestir.
+
+En resumen, la cantidad de combinaciones de las elecciones independientes resultó ser:
+$$ 5\times 4\times 3 = 60 $$
+</SolutionToggle>
+
+También podemos visualizar la regla del producto usando un árbol de posibilidades. En hecho de que las elecciones sean independientes se entiende viendo que en el árbol, todas las ramas están "balanceadas", es decir, de cada ramificación salen exactamente la misma cantidad de ramitas. Esto también explica por qué la respuesta termina siendo un producto.
+
+Una situación muy frecuente en la que podemos aplicar esta regla es en los problemas que nos piden hallar la cantidad de números cuyos dígitos satisfacen cierta relación. En estos problemas, podemos imaginar que nosotros construimos el número eligiendo cada dígito por separado, y luego ver cuántas de esas elecciones satisfacen las relaciones que nos pide el problema.
+
+<ProblemCard number="2" difficulty="easy">
+¿Cuántos números impares entre $ 1 $ y $ 1000 $ no contienen al dígito $ 1 $?
+</ProblemCard>
+
+<SolutionToggle>
+El número no puede ser 1000, así que tiene a lo sumo 3 dígitos. El primer dígito puede ser del 0 al 9, sin contar el 1, que son 9 posibilidades (si empieza tiene menos de tres dígitos); el segundo dígito puede ser del 0 al 9, sin contar el 1, que son 9 posibilidades, y el tercero puede ser 3, 5, 7 o 9, para que el número sea impar. En total, hay
+$$ 9\times 9\times 4 = 324 $$
+posibilidades.
+</SolutionToggle>
+
+Una pregunta necesaria: ¿Cuándo sirve aplicar la regla del producto? Inlcuso, una pregunta aún más útil es saber cuándo no se puede aplicar la regla del producto. Los siguientes escenarios pueden servir de guía general:
+
+* Cuando hay que combinar cosas que son independientes entre sí: el ejemplo típico: combinar remeras y pantalones.
+
+* **No** se aplica si no todas las combinaciones son válidas, por ejemplo, si el color de la remera depende del del pantalón.
+
+* **No** se aplica para juntar cuentas de casos distintos, en ese caso se suman las posibilidades.
+
+Justamente, la dificultad de los problemas de contar posibilidades aparece cuando tenemos que contar combinaciones de elecciones que no son independientes entre sí. En estos casos, tendremos que arreglárnoslas para contar solamente las combinaciones "válidas". Veremos varios casos donde ocurre esto en las siguientes secciones:
+
+
+## Permutaciones y variaciones
+
+Supongamos que ahora queremos saber cuántas formas tenemos de elegir una de nuestras $ 5 $ remeras para cada uno de los $ 5 $ días de la semana: eso sí, no queremos repetir (por higiene). 
+
+Las **variaciones** de un conjunto de elementos son las formas de formar una lista ordenada con algunos de sus elementos, sin repetir. Si se usan todos los elementos, tenemos una **permutación**. La dificultad en contar variaciones/permutaciones está en que ahora las elecciones no son independientes, sino que cada una depende de la anterior; por ejemplo, si el lunes elegí la remera verde, entonces el jueves no puedo volver a elegir la remera verde.
+
+<ProblemCard number="1" difficulty="easy">
+Julián tiene $ 10 $ remeras de distintos colores. Para cada uno de los $ 5 $ días de semana, quiere elegir una remera distinta para usar. ¿De cuántas maneras disintas puede hacerlo?
+</ProblemCard>
+
+<SolutionToggle>
+
+</SolutionToggle>
+
+En general, si tenemos $ n $ objetos y queremos formar una lista ordenada de $ r $ de ellos, sin repetir, la cantidad de formas de hacer esto es
+
+$$ 
+n\times (n - 1)\times (n - 2)\times \cdots (n - r + 2)\times (n - r + 1) = nVr
+$$
+
+Para no tener que escribir toda la multiplicación, se puede usar el símbolo de la derecha, que se lee *$n$ permutados de a $r$*.
+
+Por ejemplo, la respuesta del primer ejemplo puede escribirse como
+
+$$
+10V5 = 30.420
+$$
+
+Para que esta cuenta tenga sentido, debemos tener $ n \ge r $ (por ejemplo, si sólo tengo $ 4 $ remeras, ¿es posible no repetir remera dos días de semana distintos?). Pero, si $ n = r $, tenemos otra interpretación de qué es lo que estamos contando. La multiplicación quedaría:
+
+$$
+n \times (n - 1) \times (n - 2) \times \cdots \times 1 = n!
+$$
+
+Y en este caso, la multiplicación de tales números se escribe como $n!$, y se lee "$n$ factorial". El factorial de un número cuenta la cantidad de permutaciones (es decir, reordenamientos) de un conjunto con esa cantidad de elementos. La siguiente imagen muestra los valores y los significados de los primeros números factoriales:
+
+[IMAGEN]
+
+Otra ventaja de inventarle un nombre a $n!$ es que ahora podemos escribir la respuesta al problema de las varianciones de la siguiente forma:
+
+$$
+nVr = \frac{n!}{(n - r)!}
+$$
+
+Para entender por qué esto es cierto, tenemos que escribir cada factorial como la multiplicación correspondiente y cancelar los términos iguales en el numerador y el denominador.
+
+De ahora en más, usaremos la expresión en el lado derecho de la igualdad, pues es lo más frecuente. Resulta fácil alarmarse al ver que la respuesta a un problema de contar viene dada expresada como una fracción, sin embargo, al escribir el desarrollo de los factoriales resulta claro por qué este temor es infundado.
+
+Veamos otra situación, en apariencia bastante distinta, donde también tenemos que contar unas permutaciones.
+
+<ProblemCard number="2" difficulty="medium">
+¿De cuántas formas se pueden colocar $ 8 $ torres en un tablero de ajedrez de $ 8\times 8 $ de forma tal que no se ataquen entre sí?
+</ProblemCard>
+
+<SolutionToggle>
+Como las torres no pueden compartir fila, debe haber una torre por fila. Más aún, las torres de cada fila deben estar en columnas distintas. Para elegir la columna en la que colocar la torre de la primera fila tenemos 8 opciones, la de la segunda, tenemos 7 opciones (todas salvo la ya usada). En total, hay
+
+$$
+8! = 8\times 7\times 6\times 5\times 4\times 3\times 2\times 1 = 40.320
+$$
+
+posibilidades.
+</SolutionToggle>
+
+## Combinaciones
+
+Supongamos ahora que vamos a un viaje de $ 3 $ días y tenemos que elegir qué remeras llevarnos. Sabemos cuántas formas hay de planificar cuál usamos para día, pero eso ya no nos importa: queremos saber cuántas formas hay de elegir $ 3 $, no importa cuál usemos qué día.
+
+Las **combinaciones** de un conjunto de elementos son las formas de elegir algunos de sus elementos, sin importar el orden en que se elijan. La nueva dificultad para contar combinaciones es lograr no contar por duplicado dos elecciones de los mismos elementos en otro orden. Y esto no es menor: uno de los problemas capitales de la combinatoria consiste en cómo evitar contar cosas repetidas. Por suerte, hay una forma muy elegante de evitarlo en este caso.
+
+<ProblemCard number="1" difficulty="easy">
+Julián tiene $ 10 $ remeras de distintos colores, y quiere elegir $ 3 $ de ellas para llevarse de vacaciones. ¿De cuántas maneras puede hacerlo?
+</ProblemCard>
+
+<SolutionToggle>
+
+</SolutionToggle>
+
+En general, si tenemos $ n $ objetos y queremos seleccionar $ r $ de ellos, no importa en cuál orden, tenemos:
+
+$$
+\frac{n\times (n-1)\times (n-2)\times \cdots\times (n-r+1)}{r\times (r-1)\times (r-2)\times \cdots\times 1} = \frac{n!}{(n-r!) r!} = nCr = \binom{n}{r}
+$$
+
+Las dos expresiones de la derecha son dos abreviaciones distintas de la cantidad de combinaciones de r números de un total de n, y se leen "$n$ tomados de a $r$". (La primera, $nCr$ es la que aparece en las calculadoras científicas, pero la segunda $\binom{n}{r}$, es por lejos la más común.) 
+
+En este caso, resulta mucho más preocupante que la respuesta termine siendo un número entero o no (para nuestra tranquilidad, siempre lo es, así que Pepito no va a terminar con una cantidad racional de amigos), y el hecho de que siempre lo sea es una curiosidad aritmética bastante menos obvia que en el caso anterior. Por ahora, puede tranquilizar ver algunos ejemplos de números combinatorios en acción:
+
+[IMAGEN]
+
+Los números combinatorios son muy especiales (no por nada reciben un nombre propio) y aparecen frecuentemente en combinatoria y en otras áreas, como la teoría de números.
+
+## Para calentar los motores
+
+Antes de pasar a la lista de problemas, dejo unos problemas seleccionados con sus soluciones para ver cómo los argumentos se vuelven más intrincados y astutos. Por supuesto, antes de lanzarse a la solución, recomiendo pensar al menos 15 minutos cada problema.
+
+<ProblemCard number="1" difficulty="easy">
+Conjunto de partes
+</ProblemCard>
+
+<ProblemCard number="2" difficulty="easy">
+Anagramas
+</ProblemCard>
+
+<ProblemCard number="3" difficulty="medium">
+¿De cuántas formas se pueden elegir cinco números entre 1 y 20 de forma que cualesquiera dos números elegidos difieran en al menos 2?
+</ProblemCard>
+
+<ProblemCard number="4" difficulty="medium">
+Una torre empieza en la casilla inferior izquierda de un tablero de ajedrez. La torre debe llegar a la casilla superior derecha haciendo solo movimientos hacia arriba o hacia la derecha. ¿Cuántos caminos posibles tiene la torre?
+</ProblemCard>
+
+<ProblemCard number="5" difficulty="medium">
+a) Ana, Beto y Carlos tienen 25 caramelos para repartirse. Los caramelos son idénticos, por lo que solo importa la cantidad de caramelos que recibe cada uno. Ana y Beto quieren recibir al menos un caramelo cada uno. Determinar de cuántas formas se pueden repartir los caramelos.
+
+b) ¿Cuántas soluciones tiene la ecuación
+$$
+a + b + c + d = 100
+$$
+donde $ a $, $ b $, $ c $ y $ d $ son enteros positivos?
+
+c) ¿Cuál es la relación entre las partes a) y b)?
+</ProblemCard>
+
+## Lista de problemas
+
+<InlineProblem
+    number="1"
+    source="zonal-2020-n2-2"
+>
+Diego tiene $4$ fichas blancas y $8$ fichas negras y quiere ubicarlas en una fila de modo que siempre cada ficha blanca tenga inmediatamente a su derecha una ficha negra. Determinar de cuántas maneras puede hacerlo.
+</InlineProblem>
+
+<InlineProblem
+    number="2"
+    source="zonal-2018-n1-1"
+>
+Bruno debe elegir tres números distintos entre $1, 2, 3, 4, 5, 6, 7, 8, 9$ de modo que la suma de los tres elegidos sea un número par. Determinar de cuántas maneras puede hacer su elección.
+</InlineProblem>
+
+<InlineProblem
+    number="3"
+    source="regio-2021-n2-3"
+>
+Se tiene un cuadrado de $11\times 11$ cuadriculado en cuadraditos de $1\times 1$. Determinar de cuántas maneras se puede dividir en cinco rectángulos, siguiendo las líneas del cuadriculado, con la condición de que exactamente uno de los rectángulos no tenga ningún lado que sea parte del borde del cuadrado de $11\times 11$ (y los cinco rectángulos cubran totalmente el cuadrado).
+</InlineProblem>
+
+<InlineProblem
+    number="4"
+    source="metro-2016-n1-2"
+>
+Sea $S = \{1, 2, 3, 4, 5\}$. Ana elige algunos números de $S$;  Beto también elige algunos números de $S$. 
+Decimos que Ana y Beto hacen una elección feliz si han elegido exactamente un número en común. Calcular cuántas elecciones felices pueden hacer Ana y Beto.
+</InlineProblem>
+
+<InlineProblem
+    number="5"
+    source="regio-1998-n2-3"
+>
+Utilizando exclusivamente las letras $A$ y $B$ se escriben palabras de $15$ letras tales que en cada palabra figuren exactamente cinco veces el grupo $AA$, y exactamente tres veces cada uno de los grupos $AB$, $BA$ y $BB$. Por ejemplo, una de estas palabras es $AAAABABBAAABBBA$. 
+¿Cuántas palabras distintas se pueden escribir?
+</InlineProblem>
+
+<InlineProblem
+    number="6"
+    source="selimo-2021-4"
+>
+Un patrón en cruz es una distribución de los nueve dígitos $1, 2, \ldots , 9$ formando una X como en el siguiente ejemplo:
+$$ 
+1\quad\quad 8 
+$$
+$$ 
+3\quad 6 
+$$
+$$ 
+5 
+$$
+$$ 
+4\quad 7 
+$$
+$$ 
+2\quad\quad 9
+$$
+Diremos que un patrón en cruz es balanceado si las sumas de los cinco números de cada diagonal son iguales. Nuestro ejemplo es balanceado porque $1 + 3 + 5 + 7 + 9 = 2 + 4 + 5 + 6 + 8$. Calcular cuántos patrones en cruz son balanceados.
+</InlineProblem>
+
+<InlineProblem
+    number="7"
+    source=""
+>
+¿De cuántas maneras pueden ubicarse en fila $7$ hombres y $9$ mujeres, todos de alturas diferentes, de modo que los hombres entre sí y las mujeres entre sí se encuentren ordenados de forma creciente de altura?
+</InlineProblem>
+
+<InlineProblem
+    number="8"
+    source=""
+>
+Una araña usa una media y una zapatilla en cada uno de sus pies. Para vestirse, la araña se coloca una media o zapatilla por vez, y en cada pie se coloca la media antes de la zapatilla. ¿En cuántos órdenes distintos puede vestirse la araña?
+</InlineProblem>
+
+<InlineProblem
+    number="9"
+    source=""
+>
+En un torneo de ping-pong juegan $5$ jugadores que inicialmente están ubicados en una hilera. El jugador #5 juega contra el #4 y el perdedor recibe el 5to puesto. El ganador del partido anterior juega contra el #3 y el perdedor de este partido recibe el 4to puesto. El ganador juega contra el #2 y el que pierde recibe el 3er puesto. Por último, juegan el ganador del partido anterior y el #1, el que pierde recibe el 2do puesto y el ganador recibe el 1er puesto. ¿De cuántas formas diferentes pueden recibir los premios los jugadores de #1 al #5?
+</InlineProblem>
+
+<InlineProblem
+    number="10"
+    source=""
+>
+En el juego de SET hay una carta para cada combinación de cuatro características: forma (que puede ser cuadrado, triángulo o círculo), color (rojo, verde o azul), número (uno, dos o tres y relleno (sólido, rayado, punteado).
+Decimos que tres cartas forman un SET si, para cada una de las cuatro características, las tres cartas o bien comparten dicha característica (por ejemplo, son todos cuadrados) o bien difieren dos a dos en dicha característica (por ejemplo, son cuadrado, triángulo y círculo). Determinar cuántos tríos de cartas forman un SET. Determinar cuántos tríos de cartas forman un SET.
+</InlineProblem>
+
+<InlineProblem
+    number="11"
+    source="cantidad-de-divisores"
+>
+Sea $N$ un número entero positivo. 
+Escribimos su factorización en primos 
+$$ N = p_1 ^ {a_1} p_2 ^ {a_2} \cdots p_k ^ {a_k}. $$ 
+¿Cuántos divisores tiene $N$, en términos de su factorización?
+</InlineProblem>
+

@@ -1,0 +1,212 @@
+import ProblemCard from '@/components/ui/ProblemCard';
+import SolutionToggle from '@/components/ui/SolutionToggle';
+import InlineProblem from '@/components/ui/InlineProblem'
+import Remark from '@/components/ui/Remark'
+
+export const title = "¿Qué es contar?";
+export const description = "Los tres consejos para contar mejor";
+export const index = 1;
+
+# ¿Qué es contar?
+
+Contar es una de las habilidades más importantes en el repertorio de un matemático, incluso en los más avanzados. Sin embargo, lo curioso es que, en matemática, el objetivo no es contar cantidades muy complicadas, sino todo lo contrario: contar lo menos posible. Nuestro objetivo va a ser descubrir la forma más rápida y menos tediosa de enumerar objetos.
+
+Elegí separar esta explicación en dos partes: 
+
+* La primera parte es conceptual y tiene como objetivo mostrar cómo ordenarse para contar todas las posibilidades sin olvidarnos ni repetir posibilidades. En muchos de los problemas hay que sentarse y contar las posibilidades a mano, pero hasta no dominar esta habilidad recomiendo no pasar a la segunda parte.
+
+* La segunda parte es más teórica y se basa en el principio de que muchos problemas de contar pueden reducirse, mediante observaciones circunstanciales, a una lista de tres o cuatro problemas \"clásicos\" cuya respuesta podemos ya saber de antemano. El objetivo es mostrar cómo podemos hallar la solución \"inteligente\" de los problemas intermedios.
+
+Ojalá este apunte sirva como introducción al maravilloso arte de contar.
+
+## Método
+
+La combinatoria es el área de la matemática que se encarga de contar. Paradójicamente, la tarea del matemático es hacerlo, pero contando menos posible, o, al menos, de una forma que se minimicen las chances de cometer de errores. Para contar estratégicamente existen muchísimas técnicas, algunas más conceptuales, sobre cómo organizarse para contar, y otras más concretas, como fórmulas específicas para problemas puntuales. Para empezar este largo trayecto, veremos tres ideas, más del tipo conceptual, que tienen como principal objetivo ayudarnos a evitar cometer errores.
+
+El primer paso a la hora de contar es ordenarse. Hay que tener claro qué es lo que queremos contar y en qué orden. Este paso puede salvarnos de contar casos repetidos o incluso de olvidarnos otros.
+
+<ProblemCard number='1' difficulty='easy'>
+¿Cuántos cuadrados hay en la siguiente figura?
+</ProblemCard>
+
+<SolutionToggle>
+Vamos a elegir un orden para contarlos. En este caso, los vamos a contar por tamaño:
+
+* Hay 15 cuadrados de 1 x 1,
+* Hay 8 cuadrados de 2 x 2,
+* Hay 3 cuadrados de 3 x 3
+
+Luego en total hay $15 + 8 + 3 = 26$ cuadrados.
+Ordenarse es crucial en casi todos los problemas de contar, e incluso, muchas veces es la mayor dificultad. Por ejemplo, separar las cosas que queremos contar en grupos y contar la cantidad de elementos en cada grupo y luego sumarlos es una buena forma de ordenarse.
+
+<Remark>
+  Ordenarse es crucial en (casi) todos los problemas de contar.
+</Remark>
+</SolutionToggle>
+
+<ProblemCard number='2' difficulty='easy'>
+Se escriben los números del $1$ al $1000$ en una lista:
+$$ 
+1234567891011121314 \ldots 9989991000
+$$
+¿Cuántos dígitos tiene la lista?
+</ProblemCard>
+
+<SolutionToggle>
+    Contemos qué pasa en los números para cada cantidad de dígitos.
+
+    * Hay $9$ números de un dígito: $9 \times 1 = 9$ dígitos.
+    * Hay $90$ números de dos dígitos: $90 \times 2 = 180$ dígitos.
+    * Hay $900$ números de tres dígitos: $900 \times 3 = 2700$ dígitos.
+    * Hay $1$ número de cuatro dígitos: $4$ dígitos.
+
+    En total, hay $9 + 180 + 2700 + 4 = 2893$ dígitos.
+
+    <Remark>
+      Clasificar las cosas para contar y luego contar cada clase por separado.
+    </Remark>
+</SolutionToggle>
+
+## Astucia
+
+Cuando ya sabemos qué vamos a contar, debemos idear cómo contarlo. Muchas veces cierta observación puede simplificar mucho la cuenta: encontrar un patrón, aprovechar una cuenta que ya hicimos antes o encontrar una relación con una cosa más fácil de contar. Este paso puede salvarnos de tener que pasar todo el tiempo de la prueba contando algo que podía reducirse.
+
+<ProblemCard number="2" difficulty="easy">
+    ¿Cuántos números entre $1$ y $10000$...
+
+    a) son múltiplos de 3?
+
+    b) no contienen el dígito 1? 
+
+    c) son capicúas (se leen igual de derecha a izquierda)?
+</ProblemCard>
+
+<SolutionToggle>
+    a) Fijémonos que los múltiplos de tres siguen un patrón:
+    $$
+    (1, 2, 3), (4, 5, 6), (7, 8, 9), \ldots, (97, 98, 99),  (100)
+    $$
+    En cada trío, el último número es el múltiplo de $3$. Luego, como hay $33$ tríos (y un solterón), en total hay $33$ múltiplos de $3$.
+
+    b) Vamos a elegir un orden para contarlos y aprovechar las cuentas que ya hicimos antes. Contemos los números hasta cierta cantidad de dígitos:
+    Hay $9$ tales números hasta el $10$ (contando al $0$, son: $0, 2, 3, 4, 5, 6, 7, 8$ y $9$).
+    Hay $81$ tales números hasta el $100$ (puede empezar con uno de $9$ dígitos distintos y cada uno tiene $9$ opciones de terminarse, por la cuenta anterior).
+    Hay $729$ tales números hasta el $1000$ (puede empezar con uno de $9$ dígitos y cada uno tiene $81$ formas de terminarse, por la cuenta anterior).
+    En este caso estamos contando al $0$, que deberíamos excluir de a cuenta final luego, hay $728$ números sin el dígito $1$.
+
+    c) Vamos a encontrar una relación entre los capicúas y los números naturales. Contemos los capicúas según su cantidad de dígitos:
+
+    $$
+    1, 2, 3, 4, 5, 6, 7, 8, 9
+    $$
+
+    $$
+    11, 22, 33, 44, 55, 66, 77, 88, 99
+    $$
+
+    $$
+    101, 111, 121, 131, 141, 151, 161, 171, \ldots, 989, 999
+    $$
+
+    $$
+    1001, 1111, 1221, 1331, 1441, 1551, \ldots, 9889, 9999
+    $$
+
+    Los capicúas de 1 y 2 dígitos son los dígitos solos (un dígito) o duplicados (dos dígitos).
+
+    Los capicúas de 3 y 4 dígitos se forman a partir de los números de 2 dígitos: Si copiamos el número, le damos vuelta y “solapamos” las dos copias en el último dígito, resulta un capicúa de tres dígitos (19 → 191). Si lo copiamos sin solapar resulta uno de cuatro dígitos (19 → 1991).
+
+    En definitiva, para cada número entre $1$ y $99$ hay dos formas de armar un capicúa (con o sin solapamiento). Entonces hay $198$ capicúas.
+
+    <Remark>
+    Listar algunas de las cosas para contar y buscar algún patrón o clave útil.	
+    </Remark>
+</SolutionToggle>
+
+## Paciencia
+
+Por último pero no menos importante, hay que hacer la cuenta. Lo más importante es seguir la idea que teníamos prestando atención a todos los detalles o cálculos, y sobre todo, qué estamos contando en cada paso. Es común enfrascarse en las cuentas y olvidarse de qué se está contando. Este paso, bien hecho, puede salvarnos de errores de cuentas evitables.
+
+<ProblemCard number="3" difficulty="easy">
+Se escribe el número que resulta de concatenar los números del 1 al 1000 en orden:
+$$
+12345678910111213 … 9989991000
+$$
+a) ¿Cuántos dígitos tiene el número escrito?
+b) Hallar su milésimo dígito.
+</ProblemCard>
+
+<SolutionToggle>
+Contemos la cantidad total de dígitos que aportan los números dependiendo su cantidad de dígitos:
+Los números de $1$ dígito son $9$ y aportan $1$ c/u: $9$ en total.
+Los números de $2$ dígitos son $90$ y aportan $2$ c/u: $180$ en total.
+Los números de $3$ dígitos son $900$ y aportan $3$ c/u: $2700$ en total.
+Los números de $4$ dígitos son $1$, que aporta $4$ en total.
+En total hay $9 + 180 + 2700 + 1 = 2890$ dígitos.
+Para hallar el milésimo dígito, notemos que los números de $1$ y $2$ dígitos aportan $189$ dígitos en total, mientras que los de $3$ dígitos aportan más de $2000$ a esa suma. Luego, tenemos que buscar en el rango de los números de $3$ dígitos.
+Como cada número aporta $3$ dígitos, y nos faltan $811$ para llegar a $1000$, tenemos que avanzar $270,3333\ldots$ números. ¿Cómo redondeamos? Es importante saber siempre qué contamos. Si redondeamos para abajo, estamos diciendo que $270$ números aportan $810$ dígitos. Así que el milésimo dígito es el primer dígito del siguiente número.
+Los primeros $270$ números de $3$ dígitos son $100, 101, 102, \ldots, 369$. El siguiente es $370$. Así que el milésimo dígito es $3$. Fue pesada la cuenta, pero salió.
+</SolutionToggle>
+
+Siempre que tengamos que revisar si una respuesta es correcta, podemos tener en mente que existen dos tipos de errores a evitar:
+
+1. contar la misma posibilidad dos veces.
+2. olvidarnos de alguna posibilidad.
+
+Tener un método y paciencia para contar las posibilidades nos puede ayudar a evitar este tipo de errores. Sin embargo, cuando estemos contando puede ser útil hacernos preguntas concretas para cerciorarnos de qué estamos haciendo todo bien:
+
+1. la clasificación que estamos haciendo, ¿no repite números? Rta: no, los números de uno o dos dígitos son distintos entre sí, y no se repiten.
+
+2. la clasificación que estamos haciendo, ¿abarca todos los números? Rta: sí, porque los números menores o iguales que $ 1000 $ sólo pueden tener uno, dos, tres o cuatro dígitos.
+
+## Lista de Problemas
+
+Todos los problemas de esta lista pueden resolverse a mano, es decir, sentándose a contar todas las posibilidades. Los consejos presentados en esta sección, con suerte, pueden servir para hacerlo de forma más eficiente.
+
+En la siguiente sección presento otra técnica conceptual que puede ser muy útil (aunque no indispensable), para resolver los problemas de esta lista.
+
+<InlineProblem 
+    number="1"
+    source="nac-ñ-2022-n1-3"
+>
+Pablo quiere escribir la lista de todos los números de $4$ dígitos, tales que el último dígito es igual al promedio de los otros tres dígitos. ¿Cuántos números tiene que escribir? ¿Cuántos de estos números son impares?
+</InlineProblem>
+
+<InlineProblem 
+    number="2"
+    source="metro-2022-n1-3" 
+>
+En un tablero de $8 \times 1$ se quieren colocar $2$ fichas rojas y $2$ fichas azules, todas en casilleros diferentes y de manera que no haya fichas de distinto color en casilleros vecinos. ¿De cuántas maneras puede hacerse?
+</InlineProblem>
+
+<InlineProblem
+    number="3"
+    source="metro -2022-n1-6"
+>
+Edu quiere pintar las casillas de un tablero de $4\times 4$ de manera que en cada fila haya dos casillas rojas y dos casillas verdes, y en cada columna haya dos casillas rojas y dos casillas verdes. ¿De cuántas maneras puede hacerlo?
+</InlineProblem>
+
+<InlineProblem
+    number="4"
+    source="inter-2020-n3-6"
+>
+Se ordenan los números naturales formando un triángulo. El $1$ en la primera fila, $2$ y $3$ en la segunda, $4$, $5$ y $6$ en la tercera, $7$, $8$, $9$ y $10$ en la cuarta, y así siguiendo. Hallar el primero y el último número de la fila número $50$. 
+</InlineProblem>
+
+<InlineProblem
+    number="5"
+    source="zonal-2016-n1-2"
+>
+Un libro tiene $976$ páginas numeradas desde el $1$ hasta el $976$. Determinar cuántas veces aparece escrito el dígito $7$ en los números de las páginas del libro.
+</InlineProblem>
+
+<InlineProblem
+    number="6"
+    source="zonal-2020-n1-2"
+>
+Juan debe subir una escalera con $7$ escalones. 
+En un paso él puede subir $1$, $2$ o $3$ escalones. 
+Por ejemplo, podría subir $3$ escalones, después $1$, después $2$ y finalmente $1$. 
+Determinar la cantidad de maneras diferentes en las que Juan puede subir la escalera.
+</InlineProblem>
+

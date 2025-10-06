@@ -1,0 +1,65 @@
+import ProblemCard from '@/components/ui/ProblemCard';
+import SolutionToggle from '@/components/ui/SolutionToggle';
+import InlineProblem from '@/components/ui/InlineProblem'
+import Remark from '@/components/ui/Remark'
+
+export const title = "Ángulos";
+export const description = "Cómo resolver problemas de ángulos.";
+export const index = 2;
+
+# Ángulos
+
+## Introducción
+
+Un ángulo es la abertura entre dos rectas que se cortan en un punto llamado vértice. La medida de un ángulo se expresa en grados.
+
+## Tipos de ángulos
+
+- **Ángulo recto**: $90°$
+- **Ángulo agudo**: menor que $90°$
+- **Ángulo obtuso**: mayor que $90°$ pero menor que $180°$
+- **Ángulo llano**: $180°$
+- **Ángulo completo**: $360°$
+
+## Propiedades importantes
+
+### Ángulos en un vértice
+Cuando dos rectas se cortan, forman cuatro ángulos. Los ángulos opuestos son iguales, y los ángulos adyacentes suman $180°$.
+
+### Ángulos entre paralelas
+Si dos rectas paralelas son cortadas por una transversal:
+- Los ángulos correspondientes son iguales
+- Los ángulos alternos internos son iguales
+- Los ángulos alternos externos son iguales
+
+### Suma de ángulos en un triángulo
+La suma de los ángulos interiores de un triángulo es siempre $180°$.
+
+## Problemas básicos
+
+<ProblemCard number="1" difficulty="easy">
+En un triángulo, dos ángulos miden $45°$ y $60°$. ¿Cuánto mide el tercer ángulo?
+</ProblemCard>
+
+<SolutionToggle>
+Como la suma de los ángulos de un triángulo es $180°$:
+$$ 45° + 60° + x = 180° $$
+$$ x = 180° - 45° - 60° = 75° $$
+
+El tercer ángulo mide $75°$.
+</SolutionToggle>
+
+<ProblemCard number="2" difficulty="medium">
+En la figura, las rectas $l$ y $m$ son paralelas. Si el ángulo $a$ mide $120°$, ¿cuánto mide el ángulo $b$?
+
+[Figura con dos rectas paralelas cortadas por una transversal]
+</ProblemCard>
+
+<SolutionToggle>
+Como las rectas $l$ y $m$ son paralelas, los ángulos correspondientes son iguales. El ángulo $a$ y el ángulo $b$ son correspondientes, por lo tanto:
+$$ b = a = 120° $$
+</SolutionToggle>
+
+<Remark>
+En problemas con ángulos, siempre considera las propiedades de paralelas y la suma de ángulos en triángulos.
+</Remark>

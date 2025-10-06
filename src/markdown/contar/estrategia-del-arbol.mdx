@@ -1,0 +1,37 @@
+import Image from 'next/image';
+
+import ProblemCard from '@/components/ui/ProblemCard';
+import SolutionToggle from '@/components/ui/SolutionToggle';
+import InlineProblem from '@/components/ui/InlineProblem';
+import Remark from '@/components/ui/Remark'
+
+export const title = "Estrategia del árbol";
+export const description = "Un pequeño truco para ayudarnos a contar";
+export const index = 2;
+
+# Estrategia del árbol
+
+Odiada por muchos y amada por muchos otros, es indiscutible que la **estrategia del árbol de posibilidades** es increíblemente útil para contar ordenadamente. La estrategia consiste en construir las posibilidades parte por parte y pensar que las posibilidades se **ramifican** en otras, y estas ramas se ramifican nuevamente, y así sucesivamente.
+
+<Remark>
+Buscar patrones que se repitan en el árbol de posibilidades.
+</Remark>
+
+<ProblemCard number="1">
+Se tiene un tablero de $6\times 8$ como en la imagen:
+
+Se quiere ir de la casilla $A$ a la casilla $B$ haciendo $7$ movimientos a casillas vecinas en dirección diagonal. ¿Cuántos caminos posibles hay?
+</ProblemCard>
+
+<SolutionToggle>
+Contando las hojas, o extremos del árbol, vemos que en total hay $28$ posibilidades.
+<Image
+    src="/contar/arbol_de_posiblidades.png"
+    width="400"
+    height="400"
+    alt="Árbol de posibilidades"
+/>
+Si bien no será la solución más elegante, es indiscutible que el diagrama de árbol cumple un rol importantísimo para ordenarse y contar en los ejemplos más rebuscados.
+</SolutionToggle>
+
+Habiendo visto esta técnica para contar posibilidades, recomiendo al lector regresar a la lista de problemas de la sección anterior y reintentar aquellos problemas que no haya podido resolver usando esta nueva técnica.

@@ -1,0 +1,81 @@
+import ProblemCard from '@/components/ui/ProblemCard';
+import SolutionToggle from '@/components/ui/SolutionToggle';
+import InlineProblem from '@/components/ui/InlineProblem'
+import Remark from '@/components/ui/Remark'
+
+export const title = "Resolver ecuaciones";
+export const description = "Trucos para resolver (muchas) ecuaciones";
+export const index = 1;
+
+# Resolver ecuaciones
+
+## Introducción
+
+Los problemas de ecuaciones aparecen frecuentemente en las olimpiadas de matemática. En esta sección veremos algunas técnicas útiles para resolver ecuaciones, especialmente aquellas que involucran números enteros.
+
+## Una incógnita
+
+<ProblemCard number="1" difficulty="easy">
+$A$ y $B$ participaron en una carrera. La cantidad de puntos que obtuvo $A$ es igual a la cantidad de puntos que obtuvo B más 10. Si A obtuvo 25 puntos, ¿cuántos puntos obtuvo B?
+</ProblemCard>
+
+<SolutionToggle>
+Si llamamos $x$ a la cantidad de puntos que obtuvo B, entonces:
+$$ x + 10 = 25 $$
+$$ x = 25 - 10 = 15 $$
+
+Por lo tanto, B obtuvo 15 puntos.
+</SolutionToggle>
+
+## Dos incógnitas
+
+<ProblemCard number="2" difficulty="easy">
+La suma de dos números es 100 y su diferencia es 50. ¿Cuáles son los números?
+</ProblemCard>
+
+<SolutionToggle>
+Si llamamos $x$ e $y$ a los dos números, tenemos:
+$$ x + y = 100 $$
+$$ x - y = 50 $$
+
+Sumando las dos ecuaciones:
+$$ 2x = 150 $$
+$$ x = 75 $$
+
+Reemplazando en la primera ecuación:
+$$ 75 + y = 100 $$
+$$ y = 25 $$
+
+Los números son 75 y 25.
+</SolutionToggle>
+
+<Remark>
+Para resolver un sistema de dos ecuaciones con dos incógnitas, podemos usar el método de suma y resta, o el método de sustitución.
+</Remark>
+
+## Problemas con dígitos
+
+<ProblemCard number="3" difficulty="medium">
+Un número de dos dígitos es tal que si se intercambian sus dígitos, el número resultante es 9 unidades mayor que el original. Si la suma de los dígitos es 7, ¿cuál es el número original?
+</ProblemCard>
+
+<SolutionToggle>
+Si el número original es $\overline{ab}$ (donde $a$ es el dígito de las decenas y $b$ el de las unidades), entonces:
+- El número original es $10a + b$
+- El número con dígitos intercambiados es $10b + a$
+- La suma de los dígitos es $a + b = 7$
+- El número intercambiado es 9 unidades mayor: $10b + a = 10a + b + 9$
+
+De la última ecuación:
+$$ 10b + a = 10a + b + 9 $$
+$$ 9b - 9a = 9 $$
+$$ b - a = 1 $$
+
+Tenemos el sistema:
+$$ a + b = 7 $$
+$$ b - a = 1 $$
+
+Sumando: $2b = 8$, entonces $b = 4$ y $a = 3$.
+
+El número original es 34.
+</SolutionToggle>

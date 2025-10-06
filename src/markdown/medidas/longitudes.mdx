@@ -1,0 +1,70 @@
+import ProblemCard from '@/components/ui/ProblemCard';
+import SolutionToggle from '@/components/ui/SolutionToggle';
+import InlineProblem from '@/components/ui/InlineProblem'
+import Remark from '@/components/ui/Remark'
+
+export const title = "Longitudes";
+export const description = "Cómo resolver problemas de longitudes.";
+export const index = 3;
+
+# Longitudes
+
+## Introducción
+
+La longitud es la medida de la distancia entre dos puntos. En geometría, calcular longitudes es fundamental para resolver problemas de distancias, perímetros y otros cálculos.
+
+## Unidades de medida
+
+Las longitudes se pueden medir en diferentes unidades:
+- **Milímetros (mm)**
+- **Centímetros (cm)**
+- **Metros (m)**
+- **Kilómetros (km)**
+
+## Conversiones básicas
+
+- $1$ cm $= 10$ mm
+- $1$ m $= 100$ cm
+- $1$ km $= 1000$ m
+
+## Perímetros
+
+El perímetro es la suma de las longitudes de todos los lados de una figura.
+
+### Rectángulo
+$$ P = 2 \times (\text{largo} + \text{ancho}) $$
+
+### Cuadrado
+$$ P = 4 \times \text{lado} $$
+
+### Triángulo
+$$ P = \text{lado}_1 + \text{lado}_2 + \text{lado}_3 $$
+
+## Problemas básicos
+
+<ProblemCard number="1" difficulty="easy">
+Un rectángulo tiene largo $8$ cm y ancho $5$ cm. ¿Cuál es su perímetro?
+</ProblemCard>
+
+<SolutionToggle>
+Usando la fórmula del perímetro del rectángulo:
+$$ P = 2 \times (8 + 5) = 2 \times 13 = 26 \text{ cm} $$
+</SolutionToggle>
+
+<ProblemCard number="2" difficulty="medium">
+Un triángulo tiene lados de $6$ cm, $8$ cm y $10$ cm. ¿Cuál es su perímetro? ¿Es un triángulo rectángulo?
+</ProblemCard>
+
+<SolutionToggle>
+El perímetro es:
+$$ P = 6 + 8 + 10 = 24 \text{ cm} $$
+
+Para verificar si es rectángulo, usamos el teorema de Pitágoras:
+$$ 6^2 + 8^2 = 36 + 64 = 100 = 10^2 $$
+
+Como $6^2 + 8^2 = 10^2$, el triángulo es rectángulo.
+</SolutionToggle>
+
+<Remark>
+El teorema de Pitágoras es muy útil para verificar si un triángulo es rectángulo: si $a^2 + b^2 = c^2$, entonces es rectángulo.
+</Remark>

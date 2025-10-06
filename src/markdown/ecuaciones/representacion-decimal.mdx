@@ -1,0 +1,91 @@
+import ProblemCard from '@/components/ui/ProblemCard';
+import SolutionToggle from '@/components/ui/SolutionToggle';
+import InlineProblem from '@/components/ui/InlineProblem'
+import Remark from '@/components/ui/Remark'
+
+export const title = "Representación decimal";
+export const description = "Cómo pensar problemas que hablan de dígitos";
+export const index = 2;
+
+# Representación decimal
+
+## Introducción
+
+Muchos problemas de olimpiadas involucran números y sus dígitos. Para resolver estos problemas, es fundamental entender cómo se puede expresar un número en términos de sus dígitos.
+
+## Notación
+
+Un número de $n$ dígitos se puede escribir como:
+$$ \overline{a_1a_2a_3\ldots a_n} = a_1 \cdot 10^{n-1} + a_2 \cdot 10^{n-2} + \ldots + a_{n-1} \cdot 10 + a_n $$
+
+Por ejemplo:
+- $\overline{ab} = 10a + b$ (número de dos dígitos)
+- $\overline{abc} = 100a + 10b + c$ (número de tres dígitos)
+
+## Problemas básicos
+
+<ProblemCard number="1" difficulty="easy">
+Un número de dos dígitos es tal que la suma de sus dígitos es $12$. Si se intercambian los dígitos, el número resultante es $18$ unidades menor que el original. ¿Cuál es el número original?
+</ProblemCard>
+
+<SolutionToggle>
+Sea $\overline{ab}$ el número original. Tenemos:
+- Suma de dígitos: $a + b = 12$
+- Número original: $10a + b$
+- Número intercambiado: $10b + a$
+- Diferencia: $10a + b - (10b + a) = 18$
+
+Simplificando la diferencia:
+$$ 10a + b - 10b - a = 18 $$
+$$ 9a - 9b = 18 $$
+$$ a - b = 2 $$
+
+Tenemos el sistema:
+$$ a + b = 12 $$
+$$ a - b = 2 $$
+
+Sumando: $2a = 14$, entonces $a = 7$ y $b = 5$.
+
+El número original es $75$.
+</SolutionToggle>
+
+<ProblemCard number="2" difficulty="medium">
+Un número de tres dígitos es tal que si se le suma $198$, se obtiene el número con los dígitos en orden inverso. Si la suma de los dígitos es $18$, ¿cuál es el número original?
+</ProblemCard>
+
+<SolutionToggle>
+Sea $\overline{abc}$ el número original. Tenemos:
+- Suma de dígitos: $a + b + c = 18$
+- Número original: $100a + 10b + c$
+- Número invertido: $100c + 10b + a$
+- Ecuación: $100a + 10b + c + 198 = 100c + 10b + a$
+
+Simplificando:
+$$ 100a + 10b + c + 198 = 100c + 10b + a $$
+$$ 99a - 99c = -198 $$
+$$ a - c = -2 $$
+$$ c = a + 2 $$
+
+Como $a$ y $c$ son dígitos ($0$-$9$), y $c = a + 2$, tenemos que $a$ puede ser $0, 1, 2, \ldots, 7$.
+
+De $a + b + c = 18$ y $c = a + 2$:
+$$ a + b + (a + 2) = 18 $$
+$$ 2a + b = 16 $$
+$$ b = 16 - 2a $$
+
+Como $b$ debe ser un dígito ($0$-$9$), tenemos $16 - 2a \leq 9$, entonces $a \geq 3.5$, por lo que $a \geq 4$.
+
+Probando valores:
+- Si $a = 4$: $c = 6$, $b = 8$ → número $486$
+- Si $a = 5$: $c = 7$, $b = 6$ → número $567$
+- Si $a = 6$: $c = 8$, $b = 4$ → número $648$
+- Si $a = 7$: $c = 9$, $b = 2$ → número $729$
+
+Verificando: $486 + 198 = 684$ ✓, $567 + 198 = 765$ ✓, etc.
+
+Los números posibles son: $486, 567, 648, 729$.
+</SolutionToggle>
+
+<Remark>
+En problemas con dígitos, es importante considerar las restricciones: cada dígito debe estar entre $0$ y $9$, y el primer dígito de un número no puede ser $0$.
+</Remark>

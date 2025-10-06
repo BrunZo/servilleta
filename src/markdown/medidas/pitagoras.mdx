@@ -1,0 +1,80 @@
+import ProblemCard from '@/components/ui/ProblemCard';
+import SolutionToggle from '@/components/ui/SolutionToggle';
+import InlineProblem from '@/components/ui/InlineProblem'
+import Remark from '@/components/ui/Remark'
+
+export const title = "Teorema de Pitágoras";
+export const description = "El mejor amigo del geómetra.";
+export const index = 4;
+
+# Teorema de Pitágoras
+
+## Introducción
+
+El teorema de Pitágoras es uno de los teoremas más importantes de la geometría. Establece una relación fundamental entre los lados de un triángulo rectángulo.
+
+## El teorema
+
+En un triángulo rectángulo, el cuadrado de la hipotenusa es igual a la suma de los cuadrados de los catetos.
+
+Si $a$ y $b$ son los catetos y $c$ es la hipotenusa:
+$$ a^2 + b^2 = c^2 $$
+
+## Definiciones
+
+- **Triángulo rectángulo**: Un triángulo que tiene un ángulo de $90°$
+- **Catetos**: Los dos lados que forman el ángulo recto
+- **Hipotenusa**: El lado opuesto al ángulo recto (el lado más largo)
+
+## Aplicaciones
+
+### Calcular la hipotenusa
+Si conocemos los dos catetos, podemos calcular la hipotenusa:
+$$ c = \sqrt{a^2 + b^2} $$
+
+### Calcular un cateto
+Si conocemos la hipotenusa y un cateto, podemos calcular el otro cateto:
+$$ a = \sqrt{c^2 - b^2} $$
+
+## Problemas básicos
+
+<ProblemCard number="1" difficulty="easy">
+Un triángulo rectángulo tiene catetos de $3$ cm y $4$ cm. ¿Cuánto mide la hipotenusa?
+</ProblemCard>
+
+<SolutionToggle>
+Usando el teorema de Pitágoras:
+$$ c^2 = 3^2 + 4^2 = 9 + 16 = 25 $$
+$$ c = \sqrt{25} = 5 \text{ cm} $$
+
+La hipotenusa mide $5$ cm.
+</SolutionToggle>
+
+<ProblemCard number="2" difficulty="medium">
+Un triángulo rectángulo tiene hipotenusa de $13$ cm y un cateto de $5$ cm. ¿Cuánto mide el otro cateto?
+</ProblemCard>
+
+<SolutionToggle>
+Usando el teorema de Pitágoras:
+$$ 5^2 + b^2 = 13^2 $$
+$$ 25 + b^2 = 169 $$
+$$ b^2 = 169 - 25 = 144 $$
+$$ b = \sqrt{144} = 12 \text{ cm} $$
+
+El otro cateto mide $12$ cm.
+</SolutionToggle>
+
+<ProblemCard number="3" difficulty="medium">
+¿Es posible que un triángulo con lados de $7$ cm, $24$ cm y $25$ cm sea rectángulo?
+</ProblemCard>
+
+<SolutionToggle>
+Para verificar si es rectángulo, usamos el teorema de Pitágoras. El lado más largo ($25$ cm) sería la hipotenusa:
+$$ 7^2 + 24^2 = 49 + 576 = 625 = 25^2 $$
+
+Como $7^2 + 24^2 = 25^2$, el triángulo sí es rectángulo.
+</SolutionToggle>
+
+<Remark>
+El teorema de Pitágoras solo se aplica a triángulos rectángulos. Para otros tipos de triángulos, necesitamos otras fórmulas.
+</Remark>

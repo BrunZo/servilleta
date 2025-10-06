@@ -1,0 +1,56 @@
+import ProblemCard from '@/components/ui/ProblemCard';
+import SolutionToggle from '@/components/ui/SolutionToggle';
+import InlineProblem from '@/components/ui/InlineProblem'
+import Remark from '@/components/ui/Remark'
+
+export const title = "Áreas";
+export const description = "Cómo resolver problemas de áreas.";
+export const index = 1;
+
+# Áreas
+
+## Introducción
+
+El área es una medida de la superficie que ocupa una figura plana. En geometría, calcular áreas es fundamental para resolver muchos problemas.
+
+## Fórmulas básicas
+
+### Triángulo
+El área de un triángulo se calcula como:
+$$ A = \frac{1}{2} \times \text{base} \times \text{altura} $$
+
+### Rectángulo
+$$ A = \text{largo} \times \text{ancho} $$
+
+### Cuadrado
+$$ A = \text{lado}^2 $$
+
+### Paralelogramo
+$$ A = \text{base} \times \text{altura} $$
+
+## Problemas básicos
+
+<ProblemCard number="1" difficulty="easy">
+Un triángulo tiene base 8 cm y altura 6 cm. ¿Cuál es su área?
+</ProblemCard>
+
+<SolutionToggle>
+Usando la fórmula del área del triángulo:
+$$ A = \frac{1}{2} \times 8 \times 6 = \frac{1}{2} \times 48 = 24 \text{ cm}^2 $$
+</SolutionToggle>
+
+<ProblemCard number="2" difficulty="medium">
+En un rectángulo, la base mide 12 cm y la altura es $\frac{2}{3}$ de la base. ¿Cuál es el área del rectángulo?
+</ProblemCard>
+
+<SolutionToggle>
+Primero calculamos la altura:
+$$ \text{altura} = \frac{2}{3} \times 12 = 8 \text{ cm} $$
+
+Luego el área:
+$$ A = 12 \times 8 = 96 \text{ cm}^2 $$
+</SolutionToggle>
+
+<Remark>
+Recuerda que el área siempre se expresa en unidades cuadradas (cm², m², etc.).
+</Remark>

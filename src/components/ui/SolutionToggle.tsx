@@ -1,10 +1,9 @@
 "use client";
 
-import React, { useState } from 'react';
-import MathContent from './MathContent';
+import { ReactNode, useState } from 'react';
 
 export default function SolutionToggle({ children }: {
-  children: string
+  children: ReactNode;
 }) {
   const [isOpen, setIsOpen] = useState(false);
 

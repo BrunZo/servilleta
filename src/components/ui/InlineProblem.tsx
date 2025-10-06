@@ -1,14 +1,12 @@
-import React from 'react';
-import MathContent from './MathContent';
-import SolutionToggle from './SolutionToggle';
+import { ReactNode } from 'react';
 
 interface InlineProblemProps {
+  children: ReactNode;
   number: number;
   difficulty: 'easy' | 'medium' | 'hard';
-  children: React.Component;
 }
 
-export default function InlineProblem({ number, difficulty, children }: InlineProblemProps) {
+export default function InlineProblem({ children, number, difficulty }: InlineProblemProps) {
   const difficultyColors = {
     easy: 'bg-green-100 text-green-800',
     medium: 'bg-yellow-100 text-yellow-800',

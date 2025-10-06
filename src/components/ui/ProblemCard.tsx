@@ -1,11 +1,9 @@
-import React from 'react';
-import MathContent from './MathContent';
-import SolutionToggle from './SolutionToggle';
+import { ReactNode } from 'react';
 
 interface ProblemCardProps {
   number: number;
   difficulty: 'easy' | 'medium' | 'hard';
-  children: React.Component
+  children: ReactNode;
 }
 
 export default function ProblemCard({ number, difficulty, children }: ProblemCardProps) {

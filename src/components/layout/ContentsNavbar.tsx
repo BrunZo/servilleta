@@ -60,9 +60,9 @@ export default function ContentsNavbar({ sections } : { sections: Section[] }) {
   };
 
   return (
-    <div className="flex flex-col h-screen sticky top-0 z-20 bg-white border-r border-gray-200 shadow-sm w-80">
+    <div className="flex flex-col sticky w-full lg:w-80 lg:h-screen lg:overflow-scroll top-0 z-20 bg-white border-r border-gray-200 shadow-sm">
       {/* Mobile Header */}
-      <div className="lg:hidden flex items-center justify-between p-4 border-b border-gray-200 bg-white">
+      <div className="lg:hidden flex items-center justify-between h-16 p-4 border-b border-gray-200 bg-white">
         <Link href="/" className="flex items-center gap-2">
           <BookOpen className="w-6 h-6 text-blue-600" />
           <span className="font-bold text-lg text-gray-800">Servilleta</span>
@@ -76,7 +76,7 @@ export default function ContentsNavbar({ sections } : { sections: Section[] }) {
       </div>
 
       {/* Desktop Header */}
-      <div className="hidden lg:block p-6 border-b border-gray-200 bg-gradient-to-r from-blue-50 to-indigo-50">
+      <div className="hidden lg:block sticky p-6 z-20 border-b border-gray-200 bg-gradient-to-r from-blue-50 to-indigo-50">
         <Link href="/" className="flex items-center gap-3 mb-4">
           <div className="w-10 h-10 bg-blue-600 rounded-xl flex items-center justify-center">
             <BookOpen className="w-6 h-6 text-white" />
@@ -101,7 +101,11 @@ export default function ContentsNavbar({ sections } : { sections: Section[] }) {
       </div>
 
       {/* Mobile Search */}
-      <div className="lg:hidden p-4 border-b border-gray-200 bg-white">
+      <div className={`
+            lg:hidden lg:sticky
+            ${mobileMenuOpen ? 'block' : 'hidden'}
+            top-24 lg:top-auto p-4 border-b border-gray-200 bg-white
+      `}>
         <div className="relative">
           <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400" />
           <input
@@ -116,9 +120,9 @@ export default function ContentsNavbar({ sections } : { sections: Section[] }) {
 
       {/* Navigation Content */}
       <div className={`
-        lg:block lg:relative
+        lg:block fixed lg:relative
         ${mobileMenuOpen ? 'block' : 'hidden'}
-        fixed lg:static inset-0 z-10 bg-white lg:bg-transparent
+        top-32 lg:top-auto inset-0 z-10 bg-white lg:bg-transparent
       `}>
         <nav className="flex flex-col h-full">
           {/* Main Navigation */}

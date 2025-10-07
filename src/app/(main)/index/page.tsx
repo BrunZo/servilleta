@@ -2,7 +2,7 @@ import React from 'react';
 import Timeline from '@/components/ui/Timeline';
 import { getSections } from '@/lib/dataLoader';
 
-export default async function Page() {
+export default async function IndexPage() {
   const sections = await getSections();
   
   const timelineItems = sections.map((section, sectionIndex) => ({
